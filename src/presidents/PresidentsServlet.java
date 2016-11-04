@@ -2,12 +2,9 @@ package presidents;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
-=======
 import java.io.InputStreamReader;
->>>>>>> dd384ddacbddacb16fedc0c13b204675d83b5205
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -85,11 +82,6 @@ public class PresidentsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
-	}
-	
-	public void init(){
-		List<President> presidents = new ArrayList<President>();
-		
 		
 	}
 
