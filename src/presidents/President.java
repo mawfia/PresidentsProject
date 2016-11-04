@@ -1,5 +1,11 @@
 package presidents;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class President {
 
 	private String firstName;
@@ -13,6 +19,18 @@ public class President {
 	
 	public President() {
 	}
+	public President(String firstName, String middleName, String lastName, int termNumber, int startDate, int endDate,
+			String party, String photo) {
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+		this.termNumber = termNumber;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.party = party;
+		this.photo = photo;
+	}
+	
 
 	public String getFirstName() {
 		return firstName;
