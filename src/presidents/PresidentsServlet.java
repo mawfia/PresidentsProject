@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 public class PresidentsServlet extends HttpServlet {
 	President[] presi = new President[44];
 	public int currentTerm = 0;
-	public President currentPres;
 	private final static String presFileName = "WEB-INF/presidents.csv";
 
 	public PresidentsServlet() {
@@ -42,7 +41,8 @@ public class PresidentsServlet extends HttpServlet {
 					presi[k].setStartDate(Integer.parseInt(words[4].trim().substring(0, 4)));
 					presi[k].setEndDate(Integer.parseInt(words[4].trim().substring(5, 9)));
 					presi[k].setParty(words[5].trim());
-					presi[k].setFunFact(words[6].trim());
+					//presi[k].setFunFact(words[6].trim());
+					presi[k].setFunFact((words[6].replaceAll("$", ",")).trim());
 					presi[k].setPhoto(words[7].trim());
 					ServletContext context = this.getServletContext();
 					context.setAttribute("presidents", presi);
@@ -74,7 +74,6 @@ public class PresidentsServlet extends HttpServlet {
 		} else if (operation.equals("Next")) {
 			setCurrentTerm(++currentTerm);
 		}
-		System.out.println(currentTerm);
 
 		context.setAttribute("currentTerm", currentTerm);
 		RequestDispatcher dispatcher = context.getRequestDispatcher("/presidents.jsp");
