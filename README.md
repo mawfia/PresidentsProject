@@ -1,2 +1,14 @@
 # PresidentsProject
 1st Group Project in Quad 2
+The purpose of this Presidents Slide Show application is to display a web page with information about a president. 
+A user is be able to click next and previous buttons to scroll through the presidents in order. 
+The user is also be able to jump to a particular president by entering in their term number.
+
+Current maintainers:
+ * Michael Williams (SD7)
+ * Kyle Ennis (SD7)
+ * Sarah Passantino (SD7)
+ 
+This project has been sponsored by:
+Skill Distillery, a Division of Batky-Howell, LLC
+http://skilldistillery.com/
