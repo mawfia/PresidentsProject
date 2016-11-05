@@ -69,40 +69,23 @@ public class PresidentsServlet extends HttpServlet {
 
 		String operation = request.getParameter("operation");
 		String termNumber = request.getParameter("currentTerm");
-		System.out.println(operation);
-		
-		if (operation.equals("Previous")) {
-			try {
-				setCurrentTerm(--currentTerm);
-			} catch (ArrayIndexOutOfBoundsException ex) {
-				System.out.println("--index out of bounds exception caught");
-				setCurrentTerm(43);
-			}
+
+		if (operation == null) {
+			if(request.getParameter("termNumber") == null) setCurrentTerm(0);
+			else setCurrentTerm(Integer.parseInt(request.getParameter("termNumber")));
+		} else if (operation.equals("Previous")) {
+			setCurrentTerm(--currentTerm);
+			// setCurrentTerm(43);
 		} else if (operation.equals("Home")) {
 			setCurrentTerm(0);
 		} else if (operation.equals("Next")) {
-			try {
-				setCurrentTerm(++currentTerm);
-			} catch (ArrayIndexOutOfBoundsException ex) {
-				System.out.println("++index out of bounds exception caught");
-				setCurrentTerm(0);
-			}
+			setCurrentTerm(++currentTerm);
+			// setCurrentTerm(0);
 		}
 		System.out.println(currentTerm);
-		
-		
-		context.setAttribute("currentTerm", presi[currentTerm].getTermNumber());
-		
-		// int nextTerm = 0;
-		// int currentTerm = Integer.parseInt(request.getParameter("termNum"));
 
-		// switch (operation) {
-		// case "Previous": break;
-		// case "Home": break;
-		// case "Next": break;
-		// default: break;
-		// }
-		
+		context.setAttribute("currentTerm", currentTerm);
+
 		currentPres = presi[currentTerm];
 		System.out.println(currentPres.getPhoto());
 
