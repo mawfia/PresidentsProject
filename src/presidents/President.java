@@ -15,12 +15,13 @@ public class President {
 	private int startDate;
 	private int endDate;
 	private String party;
+	private String funFact;
 	private String photo;
 	
 	public President() {
 	}
 	public President(String firstName, String middleName, String lastName, int termNumber, int startDate, int endDate,
-			String party, String photo) {
+			String party, String funFact, String photo) {
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;
@@ -28,6 +29,7 @@ public class President {
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.party = party;
+		this.funFact = funFact;
 		this.photo = photo;
 	}
 	
@@ -94,6 +96,14 @@ public class President {
 
 	public void setPhoto(String photo) {
 		this.photo = photo;
+	}
+	
+	public String getFunFact(){
+		return this.funFact;
+	}
+	
+	public void setFunFact(String funFact){
+		this.funFact = funFact;
 	}
 
 	@Override
