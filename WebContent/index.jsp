@@ -5,6 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Presidents Project</title>
+<!-- <link rel="stylesheet" type="text/css" href="ovalOfficeOutside.css"/>
+ -->
 </head>
 <body>
 <h1>Welcome to the Presidents Page</h1>

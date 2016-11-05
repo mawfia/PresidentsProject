@@ -7,7 +7,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Presidents Bio Page</title>
-</head>
+<!-- <link rel="stylesheet" type="text/css" href="ovalOfficeInside.css"/>
+ -->
+ </head>
 <body>
 	<h1>Construction Almost Complete</h1>
 	<fieldset>
