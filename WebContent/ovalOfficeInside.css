@@ -2,8 +2,10 @@
 
 
 h1{
+	display: block;
 	text-align: center;
-	height: auto;
+	margin: auto;
+	text-family: Helvetica;	
 }
 
 h2{
