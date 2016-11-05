@@ -42,7 +42,7 @@ public class PresidentsServlet extends HttpServlet {
 					presi[k].setEndDate(Integer.parseInt(words[4].trim().substring(5, 9)));
 					presi[k].setParty(words[5].trim());
 					//presi[k].setFunFact(words[6].trim());
-					presi[k].setFunFact((words[6].replaceAll("$", ",")).trim());
+					presi[k].setFunFact((words[6].replaceAll("%", ",")).trim());
 					presi[k].setPhoto(words[7].trim());
 					ServletContext context = this.getServletContext();
 					context.setAttribute("presidents", presi);
