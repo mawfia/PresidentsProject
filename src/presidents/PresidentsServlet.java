@@ -77,10 +77,6 @@ public class PresidentsServlet extends HttpServlet {
 		System.out.println(currentTerm);
 
 		context.setAttribute("currentTerm", currentTerm);
-
-		currentPres = presi[currentTerm];
-		System.out.println(currentPres.getPhoto());
-
 		RequestDispatcher dispatcher = context.getRequestDispatcher("/presidents.jsp");
 		dispatcher.forward(request, response);
 

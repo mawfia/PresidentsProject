@@ -9,11 +9,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Presidents Bio Page</title>
-<!-- <link rel="stylesheet" type="text/css" href="ovalOfficeInside.css"/>
- -->
+<link rel="stylesheet" type="text/css" href="ovalOfficeInside.css"/>
  </head>
 <body>
-	<h1>Construction Almost Complete</h1>
 	<fieldset>
 	<h2>President ${presidents[currentTerm].firstName} ${presidents[currentTerm].lastName}</h2>
 		<form action="presidents.do" method="POST">
