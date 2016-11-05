@@ -41,4 +41,8 @@
 41, George, Herbert-Walker, Bush, 1989-1993, Republican, funFact, https://www.whitehouse.gov/sites/default/files/imagecache/gallery_img_full/image/image_file/george-h.w.-bush_0.jpg
 42, William, Jefferson, Clinton, 1993-2001, Democrat, funFact, https://www.whitehouse.gov/sites/default/files/imagecache/gallery_img_full/image/image_file/william_clinton.jpg
 43, George, Walker, Bush, 2001-2009, Republican, funFact, https://www.whitehouse.gov/sites/default/files/imagecache/gallery_img_full/image/image_file/portrait_georgewbush_324x404.jpg
+<<<<<<< HEAD
 44, Barack, Hussein, Obama, 2009-2016, Democrat, funFact, https://upload.wikimedia.org/wikipedia/commons/e/e9/Official_portrait_of_Barack_Obama.jpg
+=======
+44, Barack, Hussein, Obama, 2009-2016, Democrat, funFact, https://upload.wikimedia.org/wikipedia/commons/e/e9/Official_portrait_of_Barack_Obama.jpg
+>>>>>>> 20c6e5234eb9cf1c6c31f2669edd03045989b5be

@@ -2,6 +2,8 @@ package presidents;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.io.InputStreamReader;
 
 import javax.servlet.ServletException;
@@ -79,6 +81,7 @@ public class PresidentsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
+		
 	}
 
 }
