@@ -9,11 +9,10 @@
 <title>Presidents Bio Page</title>
 </head>
 <body>
-	<h1>Site Under Construction</h1>
-	<h2>President ${presidents[currentTerm].firstName} ${presidents[currentTerm].lastName}</h2>
+	<h1>Construction Almost Complete</h1>
 	<fieldset>
+	<h2>President ${presidents[currentTerm].firstName} ${presidents[currentTerm].lastName}</h2>
 		<form action="presidents.do" method="POST">
-			<legend>President</legend>
 			<c:choose>
 				<c:when test="${presidents == null}">
 					<img src="https://www.whitehouse.gov/sites/default/files/imagecache/gallery_img_full/image/image_file/washington.jpg" />

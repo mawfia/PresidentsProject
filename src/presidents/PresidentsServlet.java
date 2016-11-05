@@ -2,9 +2,6 @@ package presidents;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.io.InputStreamReader;
 
 import javax.servlet.RequestDispatcher;
@@ -47,12 +44,8 @@ public class PresidentsServlet extends HttpServlet {
 					presi[k].setParty(words[5].trim());
 					presi[k].setFunFact(words[6].trim());
 					presi[k].setPhoto(words[7].trim());
-					// System.out.println(presi[k]);
 					ServletContext context = this.getServletContext();
 					context.setAttribute("presidents", presi);
-					// context.setAttribute("presidents.termNumber", 6);
-					// int termNum =
-					// Integer.parseInt((String)context.getAttribute("termNum"));
 				}
 			}
 			buf.close();
@@ -69,18 +62,17 @@ public class PresidentsServlet extends HttpServlet {
 
 		String operation = request.getParameter("operation");
 		String termNumber = request.getParameter("currentTerm");
+		String term = request.getParameter("termNumber");
 
 		if (operation == null) {
-			if(request.getParameter("termNumber") == null) setCurrentTerm(0);
-			else setCurrentTerm(Integer.parseInt(request.getParameter("termNumber")));
+			if(term == null) setCurrentTerm(0);
+			else setCurrentTerm((Integer.parseInt(term))-1);
 		} else if (operation.equals("Previous")) {
 			setCurrentTerm(--currentTerm);
-			// setCurrentTerm(43);
 		} else if (operation.equals("Home")) {
 			setCurrentTerm(0);
 		} else if (operation.equals("Next")) {
 			setCurrentTerm(++currentTerm);
-			// setCurrentTerm(0);
 		}
 		System.out.println(currentTerm);
 
@@ -106,7 +98,9 @@ public class PresidentsServlet extends HttpServlet {
 	}
 
 	public void setCurrentTerm(int currentTerm) {
-		this.currentTerm = currentTerm;
+		if(currentTerm < 0) this.currentTerm = presi.length-1;
+		else if(currentTerm > 43) this.currentTerm = 0; 
+		else this.currentTerm = currentTerm;
 	}
 
 }
