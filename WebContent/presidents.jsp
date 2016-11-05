@@ -8,16 +8,17 @@
 <title>Presidents Bio Page</title>
 </head>
 <body>
-<h1> Still Under Construction</h1>
-
-    <form action="action.do" >
+<h1> Site Under Construction</h1>
+<%! int i = 0; %>
  <fieldset>
+    <form action="presidents.do" method="POST">
     <legend>President</legend>
+        <img src="${presidents[0].photo}" />
     <br />
     <button name ="operation"  value="Previous">Previous</button>
     <button name ="operation" value="Home">Home</button>
     <button name ="operation" value="Next">Next</button>
-	<input type="text" name="termNum"  value="Enter term number"> 
+	<input type="text" name="${sessionScope.termNumber}" value="${sessionScope.termNumber}"> 
     <button  value="submit" >Submit</button>
   </fieldset>
   </form>

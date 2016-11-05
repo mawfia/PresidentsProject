@@ -1,17 +1,13 @@
 package presidents;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
 
-public class President {
+public class President implements java.io.Serializable{
 
+	private int termNumber;
 	private String firstName;
 	private String middleName;
 	private String lastName;
-	private int termNumber;
 	private int startDate;
 	private int endDate;
 	private String party;
@@ -20,7 +16,8 @@ public class President {
 	
 	public President() {
 	}
-	public President(String firstName, String middleName, String lastName, int termNumber, int startDate, int endDate,
+	
+	public President(int termNumber, String firstName, String middleName, String lastName, int startDate, int endDate,
 			String party, String funFact, String photo) {
 		this.firstName = firstName;
 		this.middleName = middleName;
@@ -105,11 +102,12 @@ public class President {
 	public void setFunFact(String funFact){
 		this.funFact = funFact;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "President [firstName=" + firstName + ", middleName=" + middleName + ", lastName=" + lastName
-				+ ", termNumber=" + termNumber + ", startDate=" + startDate + ", endDate=" + endDate + ", party="
-				+ party + ", photo=" + photo + "]";
+		return "President [termNumber=" + termNumber + ", firstName=" + firstName + ", middleName=" + middleName
+				+ ", lastName=" + lastName + ", startDate=" + startDate + ", endDate=" + endDate + ", party=" + party
+				+ ", funFact=" + funFact + ", photo=" + photo + "]";
 	}
+
 }

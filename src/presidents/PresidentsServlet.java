@@ -4,25 +4,27 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.io.InputStreamReader;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-
-// @WebServlet("/PresidentsServlet")
 public class PresidentsServlet extends HttpServlet {
-	President[] pres = new President[44];
-	private static String presFileName = "WEB-INF/presidents.csv";
-	// private static final long serialVersionUID = 1L;
+	President[] presi = new President[44];
+	int currentTerm = 0;
+	private final static String presFileName = "WEB-INF/presidents.csv";
 
-	public void init() {
-		pres = parseFile(pres);
+	public PresidentsServlet() {
 	}
 
-	public President[] parseFile(President[] presi) {
+	@Override
+	public void init() throws ServletException {
 		try {
 			BufferedReader buf = new BufferedReader(
 					new InputStreamReader(this.getServletContext().getResourceAsStream(presFileName)));
@@ -41,10 +43,15 @@ public class PresidentsServlet extends HttpServlet {
 					presi[k].setLastName(words[3].trim());
 					presi[k].setStartDate(Integer.parseInt(words[4].trim().substring(0, 4)));
 					presi[k].setEndDate(Integer.parseInt(words[4].trim().substring(5, 9)));
-					presi[k].setParty(words[6].trim());
-					presi[k].setFunFact(words[5].trim());
+					presi[k].setParty(words[5].trim());
+					presi[k].setFunFact(words[6].trim());
 					presi[k].setPhoto(words[7].trim());
-					System.out.println(presi[k]);
+					// System.out.println(presi[k]);
+					ServletContext context = this.getServletContext();
+					context.setAttribute("presidents", presi);
+					//context.setAttribute("presidents.termNumber", 6);
+					// int termNum =
+					// Integer.parseInt((String)context.getAttribute("termNum"));
 				}
 			}
 			buf.close();
@@ -52,36 +59,45 @@ public class PresidentsServlet extends HttpServlet {
 			System.err.println(e.getMessage());
 		}
 
-		return presi;
-
-
 	}
 
-
-
-	public PresidentsServlet() {
-	}
-
-
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		ServletContext context = this.getServletContext();
+		
 		String operation = request.getParameter("operation");
-		String termNum = request.getParameter("termNum");
+		String termNumber = request.getParameter("termNumber");
+		System.out.println(termNumber);
 
-		switch(operation){
-		case "Previous": break;
-		case "Home": break;
-		case "Next": break;
-		default: break;
-		}
+		context.setAttribute("termNumber", presi[0].getTermNumber());
+
+		//int nextTerm = 0;
+		//int currentTerm = Integer.parseInt(request.getParameter("termNum"));
+		
+//		switch (operation) {
+//		case "Previous": break;
+//		case "Home": break;
+//		case "Next": break;
+//		default: break;
+//		}
+
+		// switch(operation){
+		// case "Previous": break;
+		// case "Home": break;
+		// case "Next": break;
+		// default: break;
+		// }
+		RequestDispatcher dispatcher = context.getRequestDispatcher("/presidents.jsp");
+		dispatcher.forward(request, response);
 
 	}
 
-
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
-		
+
 	}
 
 }
