@@ -17,7 +17,8 @@ import javax.servlet.http.HttpSession;
 
 public class PresidentsServlet extends HttpServlet {
 	President[] presi = new President[44];
-	int currentTerm = 0;
+	public int currentTerm = 0;
+	public President currentPres;
 	private final static String presFileName = "WEB-INF/presidents.csv";
 
 	public PresidentsServlet() {
@@ -49,7 +50,7 @@ public class PresidentsServlet extends HttpServlet {
 					// System.out.println(presi[k]);
 					ServletContext context = this.getServletContext();
 					context.setAttribute("presidents", presi);
-					//context.setAttribute("presidents.termNumber", 6);
+					// context.setAttribute("presidents.termNumber", 6);
 					// int termNum =
 					// Integer.parseInt((String)context.getAttribute("termNum"));
 				}
@@ -63,31 +64,48 @@ public class PresidentsServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException, ArrayIndexOutOfBoundsException {
 		ServletContext context = this.getServletContext();
-		
+
 		String operation = request.getParameter("operation");
-		String termNumber = request.getParameter("termNumber");
-		System.out.println(termNumber);
-
-		context.setAttribute("termNumber", presi[0].getTermNumber());
-
-		//int nextTerm = 0;
-		//int currentTerm = Integer.parseInt(request.getParameter("termNum"));
+		String termNumber = request.getParameter("currentTerm");
+		System.out.println(operation);
 		
-//		switch (operation) {
-//		case "Previous": break;
-//		case "Home": break;
-//		case "Next": break;
-//		default: break;
-//		}
+		if (operation.equals("Previous")) {
+			try {
+				setCurrentTerm(--currentTerm);
+			} catch (ArrayIndexOutOfBoundsException ex) {
+				System.out.println("--index out of bounds exception caught");
+				setCurrentTerm(43);
+			}
+		} else if (operation.equals("Home")) {
+			setCurrentTerm(0);
+		} else if (operation.equals("Next")) {
+			try {
+				setCurrentTerm(++currentTerm);
+			} catch (ArrayIndexOutOfBoundsException ex) {
+				System.out.println("++index out of bounds exception caught");
+				setCurrentTerm(0);
+			}
+		}
+		System.out.println(currentTerm);
+		
+		
+		context.setAttribute("currentTerm", presi[currentTerm].getTermNumber());
+		
+		// int nextTerm = 0;
+		// int currentTerm = Integer.parseInt(request.getParameter("termNum"));
 
-		// switch(operation){
+		// switch (operation) {
 		// case "Previous": break;
 		// case "Home": break;
 		// case "Next": break;
 		// default: break;
 		// }
+		
+		currentPres = presi[currentTerm];
+		System.out.println(currentPres.getPhoto());
+
 		RequestDispatcher dispatcher = context.getRequestDispatcher("/presidents.jsp");
 		dispatcher.forward(request, response);
 
@@ -98,6 +116,14 @@ public class PresidentsServlet extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 
+	}
+
+	public int getCurrentTerm() {
+		return currentTerm;
+	}
+
+	public void setCurrentTerm(int currentTerm) {
+		this.currentTerm = currentTerm;
 	}
 
 }

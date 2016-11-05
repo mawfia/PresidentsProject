@@ -9,17 +9,17 @@
 </head>
 <body>
 <h1> Site Under Construction</h1>
-<%! int i = 0; %>
+<h2>President ${presidents[currentTerm].firstName} ${presidents[currentTerm].lastName}</h2>
  <fieldset>
     <form action="presidents.do" method="POST">
     <legend>President</legend>
-        <img src="${presidents[0].photo}" />
+        <img src="${presidents[currentTerm].photo}" />
     <br />
     <button name ="operation"  value="Previous">Previous</button>
     <button name ="operation" value="Home">Home</button>
     <button name ="operation" value="Next">Next</button>
-	<input type="text" name="${sessionScope.termNumber}" value="${sessionScope.termNumber}"> 
-    <button  value="submit" >Submit</button>
+	<%-- <input type="text" name="${sessionScope.termNumber}" value="${sessionScope.termNumber}"> 
+    <button  value="submit" >Submit</button> --%>
   </fieldset>
   </form>
 </body>
